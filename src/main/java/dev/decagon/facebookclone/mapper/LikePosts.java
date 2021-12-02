@@ -3,9 +3,10 @@ package dev.decagon.facebookclone.mapper;
 import dev.decagon.facebookclone.entity.*;
 import lombok.Data;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.List;
+import java.util.LinkedList;
+
 
 @Data
 public class LikePosts {
@@ -14,8 +15,8 @@ public class LikePosts {
     private String title;
     private String body;
     private User user;
-    private Collection<Comment> listOfComments;
-    private Collection<PostLikes> postLikes;
+    private Collection<Comment> listOfComments = new LinkedList<>();
+    private Collection<PostLikes> postLikes = new LinkedList<>();
     private boolean likedPost;
 
     public boolean getLikedPost() {

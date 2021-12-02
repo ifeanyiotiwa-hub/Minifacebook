@@ -5,7 +5,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Collection;
-
+import java.util.LinkedList;
+import java.util.List;
 
 
 @Data
@@ -27,10 +28,10 @@ public class Post {
     private User user;
 
     @OneToMany
-    private Collection<Comment> listOfComments;
+    private Collection<Comment> listOfComments = new LinkedList<>();
 
     @OneToMany
-    private Collection<PostLikes> postLikes;
+    private List<PostLikes> postLikes = new LinkedList<>();
 
 
 }
