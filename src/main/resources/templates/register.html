@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Facebook Clone</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+                integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row ml-5 mr-5 signup-container">
+                <h1 class="logo mt-5">facebook-clone</h1>
+                <p class="intro">facebook clone is a mock facebook social network</p>
+
+            </div>
+            <div class="col-lg-7">
+                <div class="shadow p-3 mb-5 bg-body rounded">
+                    <h4 class="mt-4">Sign Up</h4>
+                    <p>Very Quick and Easy</p>
+                    <form class="form-group" th:action="@{/register}"
+                          method="post" th:object="${user}">
+                          <!--FIRSTNAME                        -->
+                        <label for="firstName">
+                            <input type="text" id="firstName" class="form-control mb-3"
+                                   name="firstName" th:field="*{firstName}"
+                                   placeholder="Enter your first name" required/>
+                        </label>
+
+                        <!-- LASTNAME-->
+                        <label for="lastName">
+                            <input type="text" id="lastName" class="form-control mb-3"
+                                   name="lastName" th:field="*{lastName}"
+                                   placeholder="Enter your surname" required/>
+                        </label>
+
+                        <!-- email-->
+                        <label for="email">
+                            <input type="email" id="email" class="form-control mb-3"
+                                   name="email" th:field="*{email}"
+                                   placeholder="Enter your email" required/>
+                        </label>
+
+                        <!-- email-->
+                        <label for="password">
+                            <input type="password" id="password" class="form-control mb-3"
+                                   name="password" th:field="*{password}"
+                                   placeholder="Enter password" required/>
+                        </label>
+
+                        <!-- email-->
+                        <div class="row mt-3">
+                            <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" class="form-control mt-2"
+                                       name="dateOfBirth" th:field="*{dateOfBirth}"
+                                       required/>
+                        </div>
+
+                        <div class="row">
+                            Gender
+                            <div class="row mb-3">
+                                <div class="form-check">
+                                    <input id="male" class="form-check-input"
+                                           type="radio" name="gender" value="male"
+                                           th:field="*{gender}" checked/>
+                                    <label for="male">Male</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input id="female" class="form-check-input"
+                                           type="radio" name="gender" value="female"
+                                           th:field="*{gender}" checked/>
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button class="btn btn-success btn-block" type="submit">
+                            Create New Account
+                        </button>
+                        <p>Have an account? </p>
+                        <a th:href="@{/index}" type="submit"
+                           class="btn btn-primary btn-block btn-lg text-center">Login</a>
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

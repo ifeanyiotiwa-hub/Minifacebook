@@ -1,8 +1,12 @@
 package dev.decagon.facebookclone.entity;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+
+@Data
 @Entity
 @Table(name = "users", uniqueConstraints ={@UniqueConstraint(columnNames = "email")})
 public class User {
