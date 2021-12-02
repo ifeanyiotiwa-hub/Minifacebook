@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>faceBook Clone Logout</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+
+        <link rel="stylesheet" th:href="@{/style.css}" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row ml-5 mr-5">
+                <div class="col-lg-7">
+                    <h1 class="logo mt-5">facebook</h1>
+                    <p class="intro">
+                        Facebook helps you connect and share <br> with the people in your life.
+                    </p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="shadow p-3 mb-5 bg-body rounded text-center mt-5">
+                        <h4 class="mt-4">Log Out Successful</h4>
+                        <p>
+                            You have successfully logged out of your account.</p>
+
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4">
+                                <a th:href="@{/index}" class="btn btn-light btn-block" type="submit">Login</a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </body>
+</html>
