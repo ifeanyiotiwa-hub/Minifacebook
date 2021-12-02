@@ -12,10 +12,14 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long commentId;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String commentBody;
 
+    @ManyToOne
     private Post post;
 
+    @ManyToOne
     private User user;
 
     private String comments;
