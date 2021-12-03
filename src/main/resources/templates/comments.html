@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>faceBook Clone - Comments</title>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#" th:text="${loggedUser.getLastName() + 'Comments'}"></a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/home}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <h4 class="mb-3">Comments</h4>
+            </div>
+
+            <div th:if="${allComments.size() != 0}">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-blue">
+                    <tr>
+                        <th>User</th>
+                        <th>comment</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="comment: ${allComments}">
+                        <td th:text="${comment.getUser().getLastName()}"></td>
+                        <td th:text="${comment.getCommentBody()}">comment</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-6">
+                                    <a th:if="${loggedUser.userId == comment.user.userId}" th:href="@{'/editcomment?commentId=' + ${comment.commentId}}" class="btn-success btn-sm">Edit Comment</a>
+
+                                </div>
+
+                                <div class="col-6">
+                                    <form th:if="${loggedUser.userId == comment.user.userId}" th:action="@{/delete-comment}" method="post" th:object="${commentDelete}">
+                                        <input style="display: none" name="commentId" th:value="${comment.getCommentId()}"/>
+                                        <button class="btn-danger btn-sm" type="submit" value="">Delete Comment</button></form>
+                                </div>
+
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row card" th:if="${allComments.size() == 0}">
+                <h6>No comments!!!</h6>
+            </div>
+
+        </div>
+
+
+    </body>
+</html>

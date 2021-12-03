@@ -50,8 +50,8 @@ public class PostController {
         model.addAttribute("postLikes", new PostLikes());
         model.addAttribute("postDelete", new Post());
 
-        List<LikePosts> listOfLiPost = postService.getAllPost(user);
-        model.addAttribute("listOfAllPost", listOfLiPost);
+        List<LikePosts> listOfPost = postService.getAllPost(user);
+        model.addAttribute("listOfAllPost", listOfPost);
 
         return "home";
     }

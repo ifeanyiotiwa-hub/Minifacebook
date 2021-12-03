@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand"href="home.html">facebook Clone</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{home}">Go Back to Login</a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        Seems Lost Go <br/><a th:href="@{home}"> Home</a>
+    </div>
+</div>
+
+</body>
+</html>

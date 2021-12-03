@@ -4,9 +4,8 @@ package dev.decagon.facebookclone.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.*;
 
 
 @Data
@@ -28,10 +27,10 @@ public class Post {
     private User user;
 
     @OneToMany
-    private Collection<Comment> listOfComments = new LinkedList<>();
+    private List<Comment> listOfComments = new ArrayList<>();
 
     @OneToMany
-    private List<PostLikes> postLikes = new LinkedList<>();
+    private List<PostLikes> postLikes = new ArrayList<>();
 
 
 }

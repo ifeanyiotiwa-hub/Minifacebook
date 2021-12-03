@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 
-@Data
+
 public class LikePosts {
 
     private Long postId;
@@ -17,7 +17,7 @@ public class LikePosts {
     private User user;
     private Collection<Comment> listOfComments = new LinkedList<>();
     private Collection<PostLikes> postLikes = new LinkedList<>();
-    private boolean likedPost;
+    public boolean likedPost;
 
     public boolean getLikedPost() {
         return likedPost;
@@ -27,4 +27,51 @@ public class LikePosts {
         this.likedPost = likedPost;
     }
 
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Collection<Comment> getListOfComments() {
+        return listOfComments;
+    }
+
+    public void setListOfComments(Collection<Comment> listOfComments) {
+        this.listOfComments = listOfComments;
+    }
+
+    public Collection<PostLikes> getPostLikes() {
+        return postLikes;
+    }
+
+    public void setPostLikes(Collection<PostLikes> postLikes) {
+        this.postLikes = postLikes;
+    }
 }

@@ -54,7 +54,7 @@
                         <div class="row mt-3">
                             <label for="dob">Date of Birth</label>
                                 <input type="date" id="dob" class="form-control mt-2"
-                                       name="dateOfBirth" th:field="*{dateOfBirth}"
+                                       name="dateOfBirth" th:field="*{dateOfBirth}" min="1905-01-01" max="2003-01-01"
                                        required/>
                         </div>
 
@@ -86,7 +86,7 @@
                             Create New Account
                         </button>
                         <p>Have an account? </p>
-                        <a th:href="@{/index}" type="submit"
+                        <a th:href="@{index}" type="submit"
                            class="btn btn-primary btn-block btn-lg text-center">Login</a>
                     </form>
 

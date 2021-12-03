@@ -5,7 +5,7 @@ import dev.decagon.facebookclone.dto.LogInDto;
 import dev.decagon.facebookclone.dto.ResponseDTO;
 import dev.decagon.facebookclone.entity.User;
 import dev.decagon.facebookclone.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +36,18 @@ public class UserController {
     public String getLoginPage(Model model){
         model.addAttribute("user",new LogInDto());
         return "index";
+    }
+
+    @GetMapping("/userprofile")
+    public String gotoUserProfile(Model model, HttpSession session){
+        User user = (User) session.getAttribute("logUser");
+        if(user == null)
+            return "/index";
+
+        model.addAttribute("loggedUser", user);
+
+
+        return "userprofile";
     }
 
 
