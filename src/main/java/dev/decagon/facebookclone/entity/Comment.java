@@ -1,11 +1,12 @@
 package dev.decagon.facebookclone.entity;
 
-
-import lombok.Data;
-
+import lombok.*;
 import javax.persistence.*;
 
+
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "comments")
 public class Comment {
@@ -25,24 +26,14 @@ public class Comment {
     private String comments;
 
 
-    public Comment() {
-    }
-
-    public Comment(String commentBody, Post post, User user, String comments) {
-        this.commentBody = commentBody;
+    public Comment(String comments, Post post, User user) {
         this.post = post;
         this.user = user;
-        this.comments = comments;
+        this.commentBody = comments;
     }
 
-    public Comment(Post post, User user, String comments) {
-        this.post = post;
-        this.user = user;
-        this.comments = comments;
-    }
-
-    public Comment(Long commentId, String commentBody) {
+    public Comment(Long commentId, String comment) {
         this.commentId = commentId;
-        this.commentBody = commentBody;
+        this.commentBody = comment;
     }
 }

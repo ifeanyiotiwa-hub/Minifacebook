@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 public class LikeController {
@@ -22,19 +23,18 @@ public class LikeController {
     }
 
     @PostMapping("/like_post")
-    public @ResponseBody String likePost(HttpServletRequest request, HttpSession session){
-        try{
+    public @ResponseBody String likePost(HttpServletRequest request, HttpSession session) throws IOException {
             User user = (User) session.getAttribute("logUser");
             Long postId = Long.parseLong(request.getParameter("postId"));
 
             String action = request.getParameter("action");
 
-            if(likeService.likePost(user, postId, action))
+            if(likeService.likePost(user, postId, action)) {
                 return "successful";
-        }
-        catch(Exception e){
-            session.setAttribute("message", "Internal Server error");
-        }
-        return "";
+            }
+            else {
+                session.setAttribute("message", "Internal Server error");
+            }
+            return "";
     }
 }

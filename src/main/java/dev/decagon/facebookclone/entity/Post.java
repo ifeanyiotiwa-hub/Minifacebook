@@ -1,7 +1,7 @@
 package dev.decagon.facebookclone.entity;
 
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import java.util.*;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "posts")
 public class Post {
     @Id

@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 
-@Data
+
 @Entity
 @Table(name = "users", uniqueConstraints ={@UniqueConstraint(columnNames = "email")})
 public class User {
@@ -27,13 +27,13 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-//    @Column(nullable = false)
+//    @Column(name="phone_no", nullable = false)
 //    private String phoneNo;
 
     @Column(nullable = false)
     private String gender;
 
-    @Column(nullable = false)
+    @Column(name="date_of_birth", nullable = false)
     private String dateOfBirth;
 
 

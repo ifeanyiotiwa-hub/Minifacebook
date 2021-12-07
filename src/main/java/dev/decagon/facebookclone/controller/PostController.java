@@ -41,8 +41,7 @@ public class PostController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("logUser");
 
-        if(user == null)
-            return "redirect:/";
+        if(user == null) return "redirect:/";
 
         model.addAttribute("post", new Post());
         model.addAttribute("newComment", new Comment());
@@ -61,8 +60,7 @@ public class PostController {
     public String getUpdatePostPage(Model model, HttpSession session, Long id) {
         User user = (User) session.getAttribute("logUser");
 
-        if(user == null)
-            return "redirect:/";
+        if(user == null) return "redirect:/";
 
         Post post = postService.getPostById(id);
 
@@ -82,7 +80,7 @@ public class PostController {
 
 
     @PostMapping("/update")
-    public String updatePost(Post post){
+    public String updatePost(HttpSession session, Post post){
         Post newPost = postService.getPostById(post.getPostId());
 
         newPost.setBody(post.getBody());
@@ -99,18 +97,18 @@ public class PostController {
                              @PathVariable("id") Long id){
         User user = (User) httpSession.getAttribute("logUser");
         ResponseDTO response = new ResponseDTO();
-        if(user != null){
-            Post post = postService.getPostById(id);
-            commentService.deleteAllCommentsInPost(post);
-            likeService.deleteAllLikesInPost(post);
-            postService.deletePost(post);
-
-            redirectAttributes.addFlashAttribute("message", response.getMessage());
-
-            return "redirect:/home";
+        if(user == null){
+            return  "redirect:/index";
         }
 
-        return  "redirect:/index";
+        Post post = postService.getPostById(id);
+        commentService.deleteAllCommentsInPost(post);
+        likeService.deleteAllLikesInPost(post);
+        postService.deletePost(post);
+
+        redirectAttributes.addFlashAttribute("message", response.getMessage());
+
+        return "redirect:/home";
     }
 
 }

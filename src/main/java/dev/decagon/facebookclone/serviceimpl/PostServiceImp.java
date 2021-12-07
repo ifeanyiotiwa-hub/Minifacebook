@@ -1,10 +1,7 @@
 package dev.decagon.facebookclone.serviceimpl;
 
 
-import dev.decagon.facebookclone.entity.Comment;
-import dev.decagon.facebookclone.entity.Post;
-import dev.decagon.facebookclone.entity.PostLikes;
-import dev.decagon.facebookclone.entity.User;
+import dev.decagon.facebookclone.entity.*;
 import dev.decagon.facebookclone.mapper.LikePosts;
 import dev.decagon.facebookclone.repository.*;
 import dev.decagon.facebookclone.service.PostService;
@@ -36,7 +33,7 @@ public class PostServiceImp implements PostService {
 
     @Override
     public List<LikePosts> getAllPost(User user) {
-        List<LikePosts> listOfLikePosts = new LinkedList<LikePosts>();
+        List<LikePosts> listOfLikePosts = new LinkedList<>();
         List<Post> listOfPost = postRepository.findAllByPostIdIsNotNullOrderByPostIdDesc();
 
         for(Post post: listOfPost){
@@ -51,6 +48,7 @@ public class PostServiceImp implements PostService {
             List<Comment> listOfComments = commentRepository.findCommentByPost(post);
             likePost.setListOfComments(listOfComments);
 
+            System.err.println(">>>>>>>>>>>>>>>>>>>>>>>>>" + listOfComments);
             likePost.setPostLikes(listOfLikes);
 
             List<PostLikes> listOfPostLikes = likeRepository.findAllByPost(post);

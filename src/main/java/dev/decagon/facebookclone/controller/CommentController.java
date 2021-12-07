@@ -2,14 +2,13 @@ package dev.decagon.facebookclone.controller;
 
 
 import dev.decagon.facebookclone.entity.*;
+import dev.decagon.facebookclone.repository.PostRepository;
 import dev.decagon.facebookclone.service.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,7 +21,11 @@ public class CommentController {
 
     private final PostService postService;
 
+    @Autowired
+    private PostRepository postRepository;
 
+
+    @Autowired
     public CommentController(CommentService commentService, PostService postService) {
         this.commentService = commentService;
         this.postService = postService;
@@ -31,8 +34,7 @@ public class CommentController {
     @GetMapping("/editcomment")
     public String getEditCommentPage(Model model, HttpSession session, Long id) {
         User user = (User) session.getAttribute("logUser");
-        if(user == null)
-            return "redirect:/";
+        if(user == null) return "redirect:/";
 
         Comment comment = commentService.getCommentById(id);
 
@@ -47,8 +49,7 @@ public class CommentController {
     public String getAllCommentsPage(Model model, HttpSession session, Long id) {
         User user = (User) session.getAttribute("logUser");
 
-        if(user == null)
-            return "redirect:/";
+        if(user == null) return "redirect:/";
 
         Post post = postService.getPostById(id);
 
@@ -65,14 +66,13 @@ public class CommentController {
     @PostMapping("/home-comment")
     public String createComment(@ModelAttribute("newComment") Comment comment, HttpSession session, HttpServletRequest request){
         User user = (User) session.getAttribute("logUser");
-        if(user == null)
-            return "redirect:/";
+        if(user == null) return "redirect:/";
 
-        Long id = Long.parseLong(request.getParameter("postId"));
+        Long id = Long.parseLong(request.getParameter("postid"));
 
         Post post = postService.getPostById(id);
 
-        Comment newComment = new Comment(post, user, comment.getCommentBody());
+        Comment newComment = new Comment(comment.getCommentBody(), post, user);
 
         commentService.saveComment(newComment);
 
@@ -85,6 +85,8 @@ public class CommentController {
 
     @PostMapping("/update-comment")
     public String updateComment(@ModelAttribute("comment") Comment comment){
+        System.err.println("in edit comment");
+        System.err.println(comment);
         Comment newComment = commentService.getCommentById(comment.getCommentId());
         newComment.setCommentBody(comment.getComments());
 

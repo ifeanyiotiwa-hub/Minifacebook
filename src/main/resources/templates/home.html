@@ -38,7 +38,7 @@
             <div class="row home-page">
                 <div class="col-lg-3">
                     <div class="shadow p-3 mb-5 bg-body rounded text-center">
-                        <img class="profile-image-big mt-3" th:src="@{/img/avatar.png}" alt="">
+                        <img class="profile-image-big mt-3" style="width:inherit;" th:src="@{/img/avatar.png}" alt="">
                         <h4 class="mt-2" th:text="${loggedUser.getFirstName() + ' ' + loggedUser.getLastName()}" ></h4>
                         <p>I am a goal_oriented, friendly and enthusiastic individual.</p>
                         <p th:text="${'My birthday is ' + loggedUser.dateOfBirth}"></p>
@@ -82,7 +82,7 @@
                                     <div class="comment_like_share mb-2">
                                         <div class="like">
                                             <p>
-                                                <i th:onclick="'like('+${post.postId}+', '+${loggedUser.userId}+')'" th:id="${post.postId}"
+                                                <i th:onclick="like(${post.postId}+', '+${loggedUser.userId})" th:id="${post.postId}"
                                                    style="color: #3b5998; font-size:24px" class="fa fa-thumbs-o-up" aria-hidden="true">
                                                     <span class="likes" th:text="${post.getPostLikes().size()}"></span>
                                                     <span style="display:none;" class="thumb" th:text="${post.postId}"></span></i>
@@ -90,7 +90,7 @@
                                                 <a class="ml-3" th:href="@{'/comments?postId=' + ${post.postId}}">Comments</a>
                                                 <span th:text="${post.getListOfComments().size()}"></span>
                                             </p>
-                                            <p style="display: none" class="userLiked" th:text="${post.likedPost}"></p>
+                                            <p style="display: none" class="userLiked" th:text="${post.getLikedPost()}"></p>
 
 
 
@@ -100,7 +100,7 @@
                                 </div>
 
                                 <div class="col-4" th:if="${loggedUser.userId == post.user.userId}">
-                                    <a th:href="@{'/update-post?postId=' + ${post.postId} }" class="btn-success btn-sm">Edit Post</a>
+                                    <a th:href="@{/update-post?postId=${post.postId} }" class="btn-success btn-sm">Edit Post</a>
                                 </div>
 
                                 <div class="col-4" th:if="${loggedUser.userId == post.user.userId}">
@@ -174,13 +174,13 @@
                 const URL = "/like_post";
                 let like = document.getElementById(postId).style.color;
                 console.log(like);
-                if (like == "rgb(25, 119, 242)") {
+                if (like === "rgb(25, 119, 242)") {
                     console.log("decrement");
                     const valid = document.getElementsByClassName("thumb");
                     document.getElementById(postId).style.color = "#3b5998";
                     for (let i = 0; i < valid.length; i++) {
                         let newId = valid[i].innerHTML.split(" ")[0];
-                        if (newId == postId) {
+                        if (newId === postId) {
                             let like = Number(document.getElementsByClassName("likes")[i].innerHTML);
                             like--;
                             document.getElementsByClassName("likes")[i].innerHTML = like + "";
@@ -195,7 +195,7 @@
                     document.getElementById(postId).style.color = "#1977f2";
                     for (let i = 0; i < valid.length; i++) {
                         let newId = valid[i].innerHTML.split(" ")[0];
-                        if (newId == postId) {
+                        if (newId === postId) {
                             let like = Number(document.getElementsByClassName("likes")[i].innerHTML);
                             like++;
                             document.getElementsByClassName("likes")[i].innerHTML = like + "";

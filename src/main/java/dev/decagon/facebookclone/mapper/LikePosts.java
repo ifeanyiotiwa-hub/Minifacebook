@@ -2,22 +2,22 @@ package dev.decagon.facebookclone.mapper;
 
 import dev.decagon.facebookclone.entity.*;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.*;
 
 
-
+@Component
 public class LikePosts {
 
     private Long postId;
     private String title;
     private String body;
     private User user;
-    private Collection<Comment> listOfComments = new LinkedList<>();
-    private Collection<PostLikes> postLikes = new LinkedList<>();
-    public boolean likedPost;
+    private List<Comment> listOfComments = new ArrayList<>();
+    private List<PostLikes> postLikes = new ArrayList<>();
+    private boolean likedPost;
 
     public boolean getLikedPost() {
         return likedPost;
@@ -63,7 +63,7 @@ public class LikePosts {
         return listOfComments;
     }
 
-    public void setListOfComments(Collection<Comment> listOfComments) {
+    public void setListOfComments(List<Comment> listOfComments) {
         this.listOfComments = listOfComments;
     }
 
@@ -71,7 +71,7 @@ public class LikePosts {
         return postLikes;
     }
 
-    public void setPostLikes(Collection<PostLikes> postLikes) {
+    public void setPostLikes(List<PostLikes> postLikes) {
         this.postLikes = postLikes;
     }
 }
