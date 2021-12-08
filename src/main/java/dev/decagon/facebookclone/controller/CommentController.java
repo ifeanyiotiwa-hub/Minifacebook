@@ -53,7 +53,7 @@ public class CommentController {
 
         Post post = postService.getPostById(id);
 
-        List<Comment> comments = commentService.findCommentByPost(post);
+        var comments = commentService.findCommentByPost(post);
 
         model.addAttribute("allComments", comments);
         model.addAttribute("loggedUser", user);

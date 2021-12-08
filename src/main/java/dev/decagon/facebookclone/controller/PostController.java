@@ -57,14 +57,14 @@ public class PostController {
 
 
     @GetMapping("/update-post")
-    public String getUpdatePostPage(Model model, HttpSession session, Long id) {
+    public String getUpdatePostPage(Model model, HttpSession session, @PathVariable  Long id) {
         User user = (User) session.getAttribute("logUser");
 
         if(user == null) return "redirect:/";
 
         Post post = postService.getPostById(id);
 
-        model.addAttribute("editpost", post);
+        model.addAttribute("post", post);
         model.addAttribute("loggedUser", user);
 
         return "update-post";
