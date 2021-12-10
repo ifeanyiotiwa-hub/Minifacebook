@@ -2,6 +2,7 @@ package dev.decagon.facebookclone.controller;
 
 
 import dev.decagon.facebookclone.entity.*;
+import dev.decagon.facebookclone.repository.CommentRepository;
 import dev.decagon.facebookclone.repository.PostRepository;
 import dev.decagon.facebookclone.service.*;
 
@@ -23,6 +24,8 @@ public class CommentController {
 
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private CommentRepository commentRepository;
 
 
     @Autowired
@@ -32,12 +35,13 @@ public class CommentController {
     }
 
     @GetMapping("/editcomment")
-    public String getEditCommentPage(Model model, HttpSession session, Long id) {
+    public String getEditCommentPage(Model model, HttpSession session, Long commentId) {
         User user = (User) session.getAttribute("logUser");
         if(user == null) return "redirect:/";
 
-        Comment comment = commentService.getCommentById(id);
+//        Comment comment = commentService.getCommentById(commentId);
 
+        var comment = commentRepository.findByCommentId(commentId);
         model.addAttribute("editcomment", comment);
         model.addAttribute("loggedUser", user);
 

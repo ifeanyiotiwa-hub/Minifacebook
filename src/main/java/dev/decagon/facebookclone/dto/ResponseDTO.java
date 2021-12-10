@@ -1,7 +1,7 @@
 package dev.decagon.facebookclone.dto;
 
 import dev.decagon.facebookclone.entity.User;
-import lombok.Data;
+
 
 
 public class ResponseDTO {

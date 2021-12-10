@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -72,6 +73,10 @@ public class UserController {
     public String logInUser(User user, Model model, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         HttpSession session = request.getSession();
         ResponseDTO response = userService.logInUser(user);
+
+        if(response.getStatus() == null) {
+            redirectAttributes.addFlashAttribute("message", "Invalid Sig in Details");
+        }
 
         if(response.getStatus()){
             redirectAttributes.addFlashAttribute("message", response.getMessage());
