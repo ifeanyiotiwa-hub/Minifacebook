@@ -1,115 +1,103 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>faceBook Clone - Comments</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-                integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
-    </head>
-    <body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Facebook Clone - Edit Comment</title>
+    <!-- Bootstrap 4.5 CSS-->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+    />
+    <!-- Bootstrap JS Requirements -->
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"
+    ></script>
+    <!-- My css -->
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
 
-<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--            &lt;!&ndash; Brand &ndash;&gt;-->
-<!--        <div class="container-fluid">-->
-<!--            <a class="navbar-brand" href="#" th:text="${loggedUser.getLastName() + 'Comments'}"></a>-->
 
-<!--            &lt;!&ndash; Toggler/collapsibe Button &ndash;&gt;-->
-<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">-->
-<!--                <span class="navbar-toggler-icon"></span>-->
-<!--            </button>-->
+<body>
 
-<!--            &lt;!&ndash; Navbar links &ndash;&gt;-->
-<!--            <div class="collapse navbar-collapse" id="collapsibleNavbar">-->
-<!--                <ul class="navbar-nav">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{/home}">Home</a>-->
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" th:href="@{/}">Logout</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </nav>-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/home}">Facebook Clone</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/home}" th:text="${loggedUser.getLastName() + 'Comments'}">Facebook Clone</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    </ul>
-                    <div class="d-flex navbar-right">
-                        <img class="profile-image" th:src="@{/img/avatar.png}" alt="">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class ="nav-link" th:href="@{/##}" th:text="${loggedUser.getLastName() +  ' ' + loggedUser.getFirstName()}"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/}">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            </ul>
+            <div class="d-flex navbar-right">
+                <img class="profile-image" th:src="@{/img/avatar.png}" alt="">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class ="nav-link" th:href="@{/##}" >Username</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Logout</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-
-
-        <div class="container">
-            <div class="row">
-                <h4 class="mb-3">Comments</h4>
-            </div>
-
-            <div th:if="${allComments.size() != 0}">
-<!--                <table class="table table-striped table-bordered">-->
-<!--                    <thead class="table-blue">-->
-<!--                    <tr>-->
-<!--                        <th>User</th>-->
-<!--                        <th>comment</th>-->
-<!--                        <th>Action</th>-->
-<!--                    </tr>-->
-<!--                    </thead>-->
-
-<!--                    <tbody>-->
-<!--                    <tr th:each="comment: ${allComments}">-->
-<!--                        <td th:text="${comment.getUser().getLastName()}"></td>-->
-<!--                        <td th:text="${comment.getCommentBody()}">comment</td>-->
-<!--                        <td>-->
-                     <div class="card-body container" th:each="comment: ${allComments}">
-                         <h3 th:text="${comment.getUser().getLastName()}"></h3>
-                         <p th:text="${comment.getCommentBody()}"></p>
-
-                            <div class="row">
-                                <div class="col-6">
-                                    <a th:if="${loggedUser.userId == comment.user.userId}" th:href="@{'/editcomment?commentId=' + ${comment.commentId}}" class="btn-success btn-sm">Edit Comment</a>
-
-                                </div>
-
-                                <div class="col-6">
-                                    <form th:if="${loggedUser.userId == comment.user.userId}" th:action="@{/delete-comment}" method="post" th:object="${commentDelete}">
-                                        <input style="display: none" name="commentId" th:value="${comment.getCommentId()}"/>
-                                        <button class="btn-danger btn-sm" type="submit" value="">Delete Comment</button></form>
-                                </div>
-
-                            </div>
-                     </div>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-            </div>
-
-            <div class="row card" th:if="${allComments.size() == 0}">
-                <h6>No comments!!!</h6>
-            </div>
-
         </div>
+    </div>
+</nav>
 
+<div class="container">
+    <div class="row">
+        <h3 class="mb-3">Comments</h3>
+    </div>
 
-    </body>
+    <div th:if="${allComments.size() != 0}">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>User</th>
+                <th>comment</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="comment : ${allComments}">
+                <td th:text="${comment.getUser().getLastName()}"></td>
+                <td th:text="${comment.getCommentBody()}"></td>
+                <td>
+                    <a th:if="${loggedUser.userId == comment.user.userId}" th:href="@{'/editcomment?commentId=' + ${comment.commentId}}" class="btn-success btn btn-primary">Edit Comment</a>
+<!--                    <form th:if="${loggedUser.userId == comment.user.userId}" th:action="@{/delete_comment}" method="post" th:object="${commentDelete}">-->
+                        <a type="submit" th:if="${loggedUser.userId == comment.user.userId}" th:href="@{'/delete-comment?commentId=' + ${comment.getCommentId()}}" class="btn btn-danger" >Delete</a>
+<!--                    </form>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div th:if="${allComments.size() == 0}">
+        <h6>No comments!!!</h6>
+    </div>
+
+</div>
+
+</body>
 </html>

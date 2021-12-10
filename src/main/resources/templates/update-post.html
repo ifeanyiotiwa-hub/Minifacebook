@@ -43,8 +43,12 @@
                 <h4> Edit Post</h4>
                 <form th:action="@{/update}" method="post" th:object="${editpost}">
                     <p class="mt-4">Info</p>
-                    <input hidden name="postId" th:value="*{postId}">
-                    <textarea class ="form-control drag mb-4" name="body" th:text="*{body}"></textarea>
+                    <label>
+                        <input hidden name="postId" th:value="*{postId}">
+                    </label>
+                    <label>
+                        <textarea class ="form-control drag mb-4" name="body" th:text="*{body}"></textarea>
+                    </label>
                     <button class="btn-success btn-lg btn-block" type="submit">Update</button>
                 </form>
             </div>

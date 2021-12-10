@@ -5,6 +5,7 @@ import dev.decagon.facebookclone.entity.*;
 import dev.decagon.facebookclone.mapper.LikePosts;
 import dev.decagon.facebookclone.repository.*;
 import dev.decagon.facebookclone.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -19,6 +20,7 @@ public class PostServiceImp implements PostService {
 
     private final CommentRepository commentRepository;
 
+    @Autowired
     public PostServiceImp(PostRepository postRepository, LikeRepository likeRepository, CommentRepository commentRepository) {
         this.postRepository = postRepository;
         this.likeRepository = likeRepository;

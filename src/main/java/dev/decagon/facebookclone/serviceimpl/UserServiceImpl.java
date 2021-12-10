@@ -57,6 +57,13 @@ public class UserServiceImpl implements UserService {
 
         response.setMessage("Invalid Email or Password");
         return response;
-
     }
+
+    @Override
+    public User getUserByEmail(String anyString) {
+        var user = userRepository.findUserByEmail(anyString);
+        return user.orElse(null);
+    }
+
+
 }

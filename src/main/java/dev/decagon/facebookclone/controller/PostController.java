@@ -5,6 +5,7 @@ import dev.decagon.facebookclone.dto.ResponseDTO;
 import dev.decagon.facebookclone.entity.*;
 import dev.decagon.facebookclone.mapper.LikePosts;
 import dev.decagon.facebookclone.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,7 @@ public class PostController {
 
     private final LikeService likeService;
 
+    @Autowired
     public PostController(PostService postService, CommentService commentService, LikeService likeService) {
         this.postService = postService;
         this.commentService = commentService;
@@ -57,14 +59,14 @@ public class PostController {
 
 
     @GetMapping("/update-post")
-    public String getUpdatePostPage(Model model, HttpSession session, @PathVariable  Long id) {
+    public String getUpdatePostPage(Model model, HttpSession session,  Long postId) {
         User user = (User) session.getAttribute("logUser");
 
         if(user == null) return "redirect:/";
 
-        Post post = postService.getPostById(id);
+        Post post = postService.getPostById(postId);
 
-        model.addAttribute("post", post);
+        model.addAttribute("editpost", post);
         model.addAttribute("loggedUser", user);
 
         return "update-post";

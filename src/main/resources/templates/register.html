@@ -20,75 +20,82 @@
                 <div class="shadow p-3 mb-5 bg-body rounded">
                     <h4 class="mt-4">Sign Up</h4>
                     <p>Very Quick and Easy</p>
-                    <form class="form-group" th:action="@{/register}"
-                          method="post" th:object="${user}">
-                          <!--FIRSTNAME                        -->
-                        <label for="firstName">
-                            <input type="text" id="firstName" class="form-control mb-3"
-                                   name="firstName" th:field="*{firstName}"
-                                   placeholder="Enter your first name" required/>
-                        </label>
 
-                        <!-- LASTNAME-->
-                        <label for="lastName">
-                            <input type="text" id="lastName" class="form-control mb-3"
-                                   name="lastName" th:field="*{lastName}"
-                                   placeholder="Enter your surname" required/>
-                        </label>
+                        <form class="form-group" th:action="@{/register}"
+                              method="post" th:object="${user}">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!--FIRSTNAME-->
+                                    <div class="form-group">
+                                        <label for="firstName" class="font-weight-bold">First Name</label>
+                                        <input type="text" id="firstName" class="form-control"
+                                               name="firstName" th:field="*{firstName}"
+                                               placeholder="Enter your first name" required/>
+                                    </div>
 
-                        <!-- email-->
-                        <label for="email">
-                            <input type="email" id="email" class="form-control mb-3"
-                                   name="email" th:field="*{email}"
-                                   placeholder="Enter your email" required/>
-                        </label>
+                                    <!--Email -->
+                                    <div class="form-group">
+                                        <label for="email" class="font-weight-bold">Email</label>
+                                        <input type="email" id="email" class="form-control"
+                                               name="email" th:field="*{email}"
+                                               aria-describedby="email-help" placeholder="someone@example.com"
+                                               data-error="This field is required" required/>
+                                        <div class="form-control-feedback help-block with-errors has-danger"></div>
+                                    </div>
+                                    <!--dateOfBirth-->
+                                    <div class="form-group">
+                                        <label for="dob" class="font-weight-bold">Date Of Birth</label>
+                                        <input type="date" id="dob" class="form-control" placeholder="Enter Date Of Birth"
+                                               name="dateOfBirth" th:field="*{dateOfBirth}" min="1905-01-01" max="2003-01-01"
+                                               required/>
+                                    </div>
 
-                        <!-- email-->
-                        <label for="password">
-                            <input type="password" id="password" class="form-control mb-3"
-                                   name="password" th:field="*{password}"
-                                   placeholder="Enter password" required/>
-                        </label>
-
-                        <!-- email-->
-                        <div class="row mt-3">
-                            <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" class="form-control mt-2"
-                                       name="dateOfBirth" th:field="*{dateOfBirth}" min="1905-01-01" max="2003-01-01"
-                                       required/>
-                        </div>
-
-
-                        <div class="row flex-column">
-                            <div class="col-mb-3" style="display:block;">
-                                Gender
-                            </div>
-                            <div class="row mt-3">
-                                <div class="form-check" style="display:block;">
-                                    <input id="flexRadioDefault1" class="form-check-input"
-                                           type="radio" name="gender" value="male"
-                                           th:field="*{gender}" checked/>
-                                    <label class="form-check-label" for="flexRadioDefault1">Male</label>
                                 </div>
-                                <br>
+                                <!-- /.col -->
+                                <div class="col-sm-6">
+                                    <!-- LASTNAME-->
+                                    <div class="form-group">
+                                        <label for="lastName" class="font-weight-bold">Last Name</label>
+                                        <input type="text" id="lastName" class="form-control mb-3"
+                                               name="lastName" th:field="*{lastName}"
+                                               placeholder="Enter your surname" required/>
+                                    </div>
+                                    <!-- Password field-->
+                                    <div class="form-group">
+                                        <label for="password" class="font-weight-bold">Password</label>
+                                        <input type="password" id="password" class="form-control"
+                                               name="password" th:field="*{password}"
+                                               placeholder="Enter password" required/>
+                                    </div>
+                                    <!-- Gender-->
+                                    <fieldset class="form-group">
+                                        <p class="font-weight-bold">Gender</p>
+                                        <div class="custom-control custom-radio">
+                                            <input id="flexRadioDefault1" class="custom-control-input"
+                                                   type="radio" name="gender" value="male"
+                                                   th:field="*{gender}" checked/>
+                                            <label class="custom-control-label" for="flexRadioDefault1">Male</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input id="flexRadioDefault2" class="custom-control-input"
+                                                   type="radio" name="gender" value="female"
+                                                   th:field="*{gender}" checked/>
+                                            <label class="custom-control-label" for="flexRadioDefault2">Female</label>
+                                        </div>
 
-                                <div class="form-check" style="display:block;">
-                                    <input id="flexRadioDefault2" class="form-check-input"
-                                           type="radio" name="gender" value="female"
-                                           th:field="*{gender}" checked/>
-                                    <label for="flexRadioDefault2" class="form-check-label">Female</label>
+                                    </fieldset>
                                 </div>
+                                <!-- /.col -->
                             </div>
 
-                        </div>
 
-                        <button class="btn btn-success btn-block" type="submit">
-                            Create New Account
-                        </button>
-                        <p>Have an account? </p>
-                        <a th:href="@{index}" type="submit"
-                           class="btn btn-primary btn-block btn-lg text-center">Login</a>
-                    </form>
+                            <button class="btn btn-success btn-block" type="submit">
+                                Create New Account
+                            </button>
+                            <p>Have an account? </p>
+                            <a th:href="@{index}" type="submit"
+                               class="btn btn-primary btn-block btn-lg text-center">Login</a>
+                        </form>
 
                 </div>
 

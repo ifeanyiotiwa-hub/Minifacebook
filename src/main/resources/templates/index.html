@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1 class="mb-4 text-center">
-    <h6 class="alert-success text-center" th:text="${message}"></h6>
+    <h5 class="alert-success text-center" th:text="${message}"></h5>
 </h1>
 <div class="container">
     <div class="row ml-5 mr-5">
@@ -27,7 +27,7 @@
                     <label for="password">Password</label>
                     <input class="form-control mb-3" id="password" type="password"  name="password" required th:field="*{password}" placeholder="Password">
                     <button class="btn btn-primary btn-block" type="submit">Log In</button>
-                    <p class="mt-3 mb-4 forgotten-password"><a href="#">Forgotten Password?</a></p>
+                    <p class="mt-3 mb-4 forgotten-password"><a href="forgotpassword.html">Forgotten Password?</a></p>
 
                     <a th:href="@{/register}" class="btn btn-success btn-lg" type="submit">Create New Account</a>
                 </form>

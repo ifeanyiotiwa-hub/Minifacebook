@@ -46,14 +46,15 @@ public class CommentController {
 
 
     @GetMapping("/comments")
-    public String getAllCommentsPage(Model model, HttpSession session, Long id) {
+    public String getAllCommentsPage(Model model, HttpSession session, Long postId) {
         User user = (User) session.getAttribute("logUser");
 
         if(user == null) return "redirect:/";
 
-        Post post = postService.getPostById(id);
+        var pst = postRepository.findByPostId(postId);
+        Post post = postService.getPostById(postId);
 
-        var comments = commentService.findCommentByPost(post);
+        var comments = commentService.findCommentByPost(pst);
 
         model.addAttribute("allComments", comments);
         model.addAttribute("loggedUser", user);
@@ -84,7 +85,7 @@ public class CommentController {
 
 
     @PostMapping("/update-comment")
-    public String updateComment(@ModelAttribute("comment") Comment comment){
+    public String updateComment(@ModelAttribute Comment comment){
         System.err.println("in edit comment");
         System.err.println(comment);
         Comment newComment = commentService.getCommentById(comment.getCommentId());
@@ -97,7 +98,7 @@ public class CommentController {
     }
 
 
-    @PostMapping("/delete-comment")
+    @GetMapping("/delete-comment")
     public String deleteComment(@ModelAttribute("commentDelete") Comment comment){
         commentService.deleteComment(comment.getCommentId());
         return "redirect:/home";
